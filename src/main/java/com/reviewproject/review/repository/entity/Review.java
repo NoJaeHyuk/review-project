@@ -4,9 +4,11 @@ import com.reviewproject.common.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
 @Entity
 public class Review extends BaseTimeEntity {
 

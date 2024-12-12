@@ -1,6 +1,7 @@
 package com.reviewproject.review.controller;
 
 import com.reviewproject.review.controller.request.ReviewRequest;
+import com.reviewproject.review.controller.response.ReviewResponse;
 import com.reviewproject.review.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,7 @@ public class ReviewController {
 
     private final ReviewService reviewService;
 
-    @PatchMapping("/{productId}/reviews")
+    @PostMapping("/{productId}/reviews")
     public ResponseEntity<Void> addReview(
             @PathVariable Long productId,
             @RequestPart MultipartFile image,
@@ -23,4 +24,15 @@ public class ReviewController {
         reviewService.addReview(productId, image, reviewRequest);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/{productId}/reviews")
+    public ResponseEntity<ReviewResponse> getReviews(
+            @PathVariable Long productId,
+            @RequestParam(required = false) Long cursor,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+        return ResponseEntity.ok(reviewService.getReviews(productId, cursor, size));
+    }
+
+
 }
