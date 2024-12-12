@@ -22,4 +22,9 @@ public class Product extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "product")
     private List<Review> reviews = new ArrayList<>();
+
+    public void updateScore(float newScore) {
+        this.score = ((this.score * this.reviewCount) + newScore) / (this.reviewCount + 1);
+        this.reviewCount++;
+    }
 }
