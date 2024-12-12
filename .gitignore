@@ -361,5 +361,7 @@ gradle-app.setting
 /HELP.md
 /.gitattributes
 application.properties
+/src/main/resources/application.yml
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,git,java,maven,eclipse,intellij,gradle,netbeans,visualstudiocode
+
