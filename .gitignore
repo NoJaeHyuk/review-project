@@ -362,6 +362,7 @@ gradle-app.setting
 /.gitattributes
 application.properties
 /src/main/resources/application.yml
+/mysql_data1/
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,git,java,maven,eclipse,intellij,gradle,netbeans,visualstudiocode
 
