@@ -21,8 +21,7 @@ public class ReviewService {
 
     @Transactional
     public void addReview(Long productId, MultipartFile image, ReviewRequest reviewRequest) {
-        Product product = productRepository.findById(productId);
-
+        Product product = productRepository.findByIdWithLock(productId);
         String imageUrl = imageUploader.upload(image);
 
         Review review = Review.create(
@@ -32,10 +31,8 @@ public class ReviewService {
                 reviewRequest.content(),
                 imageUrl
         );
-
         reviewRepository.save(review);
 
-        // 3. 제품의 평점 업데이트
         product.updateScore(reviewRequest.score());
     }
 

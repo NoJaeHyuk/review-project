@@ -15,4 +15,20 @@ public class ProductRepositoryImpl implements ProductRepository {
         return jpaRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 제품이 존재하지 않습니다."));
     }
+
+    @Override
+    public Product findByIdWithLock(Long productId) {
+        return jpaRepository.findByIdWithLock(productId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 제품이 존재하지 않습니다."));
+    }
+
+    @Override
+    public Product save(Product product) {
+        return jpaRepository.save(product);
+    }
+
+    @Override
+    public void flush() {
+        jpaRepository.flush();
+    }
 }
